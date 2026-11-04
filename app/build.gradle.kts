@@ -2,6 +2,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.serialization)
 }
 
 android {
@@ -66,6 +67,18 @@ android {
 }
 
 dependencies {
+
+
+    // Project modules
+    implementation(project(":core:theme"))
+    implementation(project(":feature:auth"))
+    implementation(project(":feature:home"))
+    implementation(project(":feature:catalog"))
+    implementation(project(":feature:profile"))
+
+
+
+
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.material3)
@@ -77,9 +90,6 @@ dependencies {
 
     implementation(libs.androidx.appcompat)
 
-    // Project modules
-    implementation(project(":core:theme"))
-    implementation(project(":feature:auth"))
 
     testImplementation(libs.junit)
 
@@ -91,6 +101,7 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     debugImplementation(libs.androidx.compose.ui.tooling)
 
+    implementation(libs.bundles.navigation)
 
     //koin
     implementation(libs.koin.android)

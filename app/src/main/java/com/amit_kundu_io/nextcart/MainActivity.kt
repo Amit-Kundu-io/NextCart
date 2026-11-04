@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.amit_kundu_io.nextcart.root_navigation.bottom_navigation.BottomNavScreen
 import com.amit_kundu_io.theme.theme.NextCartTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,12 +20,10 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             NextCartTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                BottomNavScreen(
+                    navigateToLoginScreen = {},
+                    logOut = {},
+                )
             }
         }
     }

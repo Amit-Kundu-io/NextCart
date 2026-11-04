@@ -2,8 +2,11 @@ package com.amit_kundu_io.nextcart
 
 import android.app.Application
 import com.amit_kundu_io.auth.di.AuthModule
+import com.amit_kundu_io.nextcart.root_navigation.bottom_navigation.BottomNavViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
+import org.koin.core.module.dsl.viewModelOf
+import org.koin.dsl.module
 
 /**
  * File: BaseApplication.kt
@@ -20,7 +23,12 @@ class BaseApplication : Application() {
             androidContext(this@BaseApplication)
             modules(
                 AuthModule,
+                rootDi
             )
         }
     }
+}
+
+val rootDi  = module {
+    viewModelOf(::BottomNavViewModel)
 }

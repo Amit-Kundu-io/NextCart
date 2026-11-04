@@ -26,3 +26,6 @@ rootProject.name = "NextCart"
 include(":app")
 include(":core:theme")
 include(":feature:auth")
+include(":feature:home")
+include(":feature:catalog")
+include(":feature:profile")
