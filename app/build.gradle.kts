@@ -71,6 +71,8 @@ dependencies {
 
     // Project modules
     implementation(project(":core:theme"))
+    implementation(project(":core:network"))
+    implementation(project(":core:database"))
     implementation(project(":feature:auth"))
     implementation(project(":feature:home"))
     implementation(project(":feature:catalog"))
