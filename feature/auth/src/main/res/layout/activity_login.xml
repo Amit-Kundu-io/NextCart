@@ -35,7 +35,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email address"
+        android:hint="Username"
         android:layout_marginTop="40dp"
         app:boxStrokeColor="@color/brand_primary">
 
