@@ -51,6 +51,7 @@ import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.amit_kundu_io.catalog.navigation.CatalogRoutes
 import com.amit_kundu_io.home.presentation.navigation.HomeRoutes
 import com.amit_kundu_io.nextcart.root_navigation.bottom_navigation.BottomNavDestination.CATALOG
 import com.amit_kundu_io.nextcart.root_navigation.bottom_navigation.BottomNavDestination.HOME
@@ -130,10 +131,10 @@ fun AppBottomNav(
         onValueChange = { item ->
             when (item.destination) {
                 HOME ->{
-
+                    navController.navigate(HomeRoutes.HomeRoute)
                 }
                 CATALOG -> {
-
+                    navController.navigate(CatalogRoutes.CatalogRoute)
                 }
                 PROFILE -> {
 
@@ -171,7 +172,7 @@ fun CustomBottomBar(
                     ?.any { destination ->
                         when (screen.destination) {
                             HOME -> destination.hasRoute<HomeRoutes.HomeRoute>()
-                            BottomNavDestination.CATALOG ->  destination.hasRoute<HomeRoutes.HomeRoute>()
+                            BottomNavDestination.CATALOG ->  destination.hasRoute<CatalogRoutes.CatalogRoute>()
                             BottomNavDestination.PROFILE ->  destination.hasRoute<HomeRoutes.HomeRoute>()
                         }
                     } == true
