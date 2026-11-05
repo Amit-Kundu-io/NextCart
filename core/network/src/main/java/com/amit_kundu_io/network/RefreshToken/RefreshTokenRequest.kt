@@ -14,5 +14,6 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class RefreshTokenRequest(
     @SerialName("refreshToken")
-    val refreshToken: String
+    val refreshToken: String,
+    val expiresInMins: Int = 60
 )

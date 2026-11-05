@@ -11,11 +11,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.amit_kundu_io.auth.data.AuthRepository
+import com.amit_kundu_io.network.domain.use_case.login.LoginUseCase
+import com.amit_kundu_io.network.utilit.NetworkResource
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
 class LoginViewModel(
-    private val authRepository: AuthRepository
+    private val useCase: LoginUseCase
 ) : ViewModel() {
 
     private val _uiState = MutableLiveData(LoginUiState())
@@ -41,6 +44,8 @@ class LoginViewModel(
             )
         }
 
+        //avat	avatpass
+
         // Validate email
         if (email.isBlank()) {
             updateState {
@@ -60,34 +65,34 @@ class LoginViewModel(
         // Start login
         viewModelScope.launch {
 
-            updateState {
-                it.copy(isLoading = true)
-            }
-
-            try {
-                val success = authRepository.login(email, password)
-
-                updateState {
-                    it.copy(
-                        isLoading = false,
-                        isSuccess = success,
-                        errorMessage = if (success) {
-                            null
-                        } else {
-                            "Invalid credentials"
+            useCase.invoke(email,password).onEach {res->
+                when(res){
+                    is NetworkResource.Error -> {
+                        updateState {
+                            it.copy(
+                                isLoading = false,
+                                errorMessage = res.message ?: "Something went wrong"
+                            )
                         }
-                    )
+                    }
+                    is NetworkResource.Loading -> {
+                        updateState {
+                            it.copy(isLoading = true)
+                        }
+                    }
+                    is NetworkResource.Success -> {
+                        updateState {
+                            it.copy(
+                                isLoading = false,
+                                isSuccess = true,
+                            )
+                        }
+                    }
                 }
 
-            } catch (exception: Exception) {
 
-                updateState {
-                    it.copy(
-                        isLoading = false,
-                        errorMessage = exception.message ?: "Something went wrong"
-                    )
-                }
-            }
+            }.launchIn(viewModelScope)
+
         }
     }
 }

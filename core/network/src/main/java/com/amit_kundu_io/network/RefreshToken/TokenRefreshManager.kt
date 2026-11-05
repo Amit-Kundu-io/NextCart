@@ -39,7 +39,7 @@ class RefreshTokenManager(
 
                 // Save new tokens
                 dataStore.setToken(response.accessToken)
-                response.refreshToken?.let { dataStore.setRefreshToken(it) }
+                response.refreshToken.let { dataStore.setRefreshToken(it) }
 
                 true
 

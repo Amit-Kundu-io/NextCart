@@ -20,7 +20,7 @@ class RefreshApiImpl(
     override suspend fun refreshToken(
         request: RefreshTokenRequest
     ): RefreshTokenResponse {
-        return client.post("/auth/refresh-token") {
+        return client.post("/auth/refresh") {
             setBody(request)
         }.body()
     }

@@ -16,7 +16,9 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity (
+
+): AppCompatActivity() {
 
     private val viewModel: LoginViewModel by viewModel()
 

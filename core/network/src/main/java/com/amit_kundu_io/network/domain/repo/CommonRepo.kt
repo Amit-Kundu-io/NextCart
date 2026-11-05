@@ -7,8 +7,11 @@
 package com.amit_kundu_io.network.domain.repo
 
 import com.amit_kundu_io.network.data.model.categorie.CategoriesItem
+import com.amit_kundu_io.network.data.model.login.AuthResponse
+import com.amit_kundu_io.network.data.model.login.LoginRequest
 import com.amit_kundu_io.network.data.model.product.Product
 import com.amit_kundu_io.network.data.model.product.Products
+import com.amit_kundu_io.network.data.model.user.User
 
 interface CommonRepo {
 
@@ -26,5 +29,14 @@ interface CommonRepo {
         limit: Int,
         skip: Int
     ): Products
+
+    suspend fun login(
+        request: LoginRequest
+    ): AuthResponse
+
+    suspend fun getMe(
+        accessToken: String
+    ): User
+
 
 }
