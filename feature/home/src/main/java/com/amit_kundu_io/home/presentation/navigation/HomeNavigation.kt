@@ -16,19 +16,13 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
+import com.amit_kundu_io.home.presentation.home.HomeScreenRoot
 
 
 fun NavGraphBuilder.homeNavigation(navController: NavHostController) {
     navigation<HomeRoutes.HomeGraph>(startDestination = HomeRoutes.HomeRoute) {
         composable<HomeRoutes.HomeRoute>() {
-
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(color = MaterialTheme.colorScheme.tertiary)
-            ) {
-                Text("Home")
-            }
+            HomeScreenRoot()
         }
     }
 }

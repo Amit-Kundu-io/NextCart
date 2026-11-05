@@ -3,6 +3,7 @@ package com.amit_kundu_io.nextcart
 import android.app.Application
 import com.amit_kundu_io.auth.di.AuthModule
 import com.amit_kundu_io.database.dataStoreModule
+import com.amit_kundu_io.home.di.HomeModule
 import com.amit_kundu_io.network.di.getCoreNetworkModule
 import com.amit_kundu_io.nextcart.root_navigation.bottom_navigation.BottomNavViewModel
 import com.amit_kundu_io.nextcart.splash.SplashViewModel
@@ -28,7 +29,9 @@ class BaseApplication : Application() {
                 AuthModule,
                 rootDi,
                 getCoreNetworkModule,
-                dataStoreModule            )
+                dataStoreModule,
+                HomeModule,
+            )
         }
     }
 }

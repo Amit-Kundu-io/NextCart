@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel() : ViewModel() {
 
     private var hasLoadedInitialData = false
 
