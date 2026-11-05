@@ -18,12 +18,15 @@ interface CommonRepo {
     suspend fun getCategories(): List<CategoriesItem>
 
     suspend fun getProducts(
-        limit: Int,
-        skip: Int,
-        search: String = ""
+        limit: Int = 20,
+        skip: Int = 0,
+        search: String = "",
+        sortBy: String? = null,
+        order: String = "asc",
+        category: String?,
     ): Products
 
-    suspend fun getProductById(productId: Int): Product
+    suspend fun getProductById(productId: Long): Product
 
     suspend fun getFeaturedProducts(
         limit: Int,

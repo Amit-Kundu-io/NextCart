@@ -30,7 +30,7 @@ sealed class BottomNavItem(
     )
 
     data object Profile : BottomNavItem(
-        destination = BottomNavDestination.CATALOG,
+        destination = BottomNavDestination.PROFILE,
         label = "Profile",
         selectedIcon = R.drawable.baseline_person_24,
         unSelectedIcon = R.drawable.outline_person_24

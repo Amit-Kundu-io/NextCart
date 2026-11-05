@@ -16,4 +16,7 @@ object CatalogRoutes {
 
     @Serializable
     object CatalogRoute
+ @Serializable
+ data class ProductDetails(val id : Long)
+
 }

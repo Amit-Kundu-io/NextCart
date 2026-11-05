@@ -43,6 +43,7 @@ android {
 dependencies {
 
     implementation(project(":core:theme"))
+    implementation(project(":core:network"))
 
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)

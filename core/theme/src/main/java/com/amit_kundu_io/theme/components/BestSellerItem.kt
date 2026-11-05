@@ -48,11 +48,11 @@ fun BestSellerItem(
                 color = MaterialTheme.colorScheme.surfaceContainerHighest,
                 modifier = Modifier.size(58.dp),
             ) {
-                ProductImage(product.thumbnail, Modifier.fillMaxSize().padding(6.dp), product.title)
+                ProductImage(product.thumbnail ?: "", Modifier.fillMaxSize().padding(6.dp), product.title)
             }
             Column(Modifier.weight(1f).padding(horizontal = 12.dp)) {
                 Text(
-                    product.title,
+                    product.title ?: "",
                     style = MaterialTheme.typography.bodyMedium,
                     fontWeight = FontWeight.Medium,
                     maxLines = 1,
@@ -64,7 +64,7 @@ fun BestSellerItem(
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier.padding(top = 4.dp),
                 )
-                RatingRow(product.rating, Modifier.padding(top = 4.dp), suffix = "rating")
+                RatingRow(product.rating ?: 0.0, Modifier.padding(top = 4.dp), suffix = "rating")
             }
             IconButton(onClick = { liked = !liked }) {
                 Icon(

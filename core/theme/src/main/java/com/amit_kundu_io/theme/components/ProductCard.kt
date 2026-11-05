@@ -34,13 +34,13 @@ fun ProductCard(
             modifier = Modifier.aspectRatio(1f),
         ) {
             ProductImage(
-                url = product.thumbnail,
+                url = product.thumbnail ?: "",
                 contentDescription = product.title,
                 modifier = Modifier.fillMaxSize().padding(8.dp),
             )
         }
         Text(
-            product.title,
+            product.title ?: "",
             style = MaterialTheme.typography.bodyMedium,
             fontWeight = FontWeight.Medium,
             maxLines = 1,
@@ -54,7 +54,7 @@ fun ProductCard(
             modifier = Modifier.padding(top = 6.dp),
         )
         RatingRow(
-            rating = product.rating,
+            rating = product.rating ?: 0.0,
             suffix = product.discountLabel(),
             modifier = Modifier.padding(top = 6.dp),
         )

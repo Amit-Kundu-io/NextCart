@@ -43,6 +43,7 @@ android {
 dependencies {
 
     implementation(project(":core:theme"))
+    implementation(project(":core:network"))
 
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)
@@ -66,6 +67,8 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
 
     implementation(libs.bundles.navigation)
+    implementation(libs.androidx.compose.material.icons.extended)
+
 
     //koin
     implementation(libs.koin.android)

@@ -8,7 +8,7 @@ object SampleData {
     private const val CDN = "https://cdn.dummyjson.com/product-images"
 
     private fun product(
-        id: Int,
+        id: Long,
         title: String,
         price: Double,
         rating: Double,

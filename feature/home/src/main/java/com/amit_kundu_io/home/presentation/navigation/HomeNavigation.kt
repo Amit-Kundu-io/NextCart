@@ -19,10 +19,13 @@ import androidx.navigation.compose.navigation
 import com.amit_kundu_io.home.presentation.home.HomeScreenRoot
 
 
-fun NavGraphBuilder.homeNavigation(navController: NavHostController) {
+fun NavGraphBuilder.homeNavigation(navController: NavHostController,
+                                   onProductClick: (id: Long) -> Unit) {
     navigation<HomeRoutes.HomeGraph>(startDestination = HomeRoutes.HomeRoute) {
         composable<HomeRoutes.HomeRoute>() {
-            HomeScreenRoot()
+            HomeScreenRoot(
+                onProductClick = onProductClick
+            )
         }
     }
 }

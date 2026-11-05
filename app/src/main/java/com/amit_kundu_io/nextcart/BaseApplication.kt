@@ -2,11 +2,13 @@ package com.amit_kundu_io.nextcart
 
 import android.app.Application
 import com.amit_kundu_io.auth.di.AuthModule
+import com.amit_kundu_io.catalog.di.catalogDi
 import com.amit_kundu_io.database.dataStoreModule
 import com.amit_kundu_io.home.di.HomeModule
 import com.amit_kundu_io.network.di.getCoreNetworkModule
 import com.amit_kundu_io.nextcart.root_navigation.bottom_navigation.BottomNavViewModel
 import com.amit_kundu_io.nextcart.splash.SplashViewModel
+import com.amit_kundu_io.profile.presentation.di.ProfileModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.core.module.dsl.viewModelOf
@@ -31,6 +33,8 @@ class BaseApplication : Application() {
                 getCoreNetworkModule,
                 dataStoreModule,
                 HomeModule,
+                catalogDi,
+                ProfileModel
             )
         }
     }

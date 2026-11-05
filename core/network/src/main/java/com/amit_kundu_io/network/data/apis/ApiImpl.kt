@@ -32,25 +32,38 @@ class ApiImpl(
     override suspend fun getProducts(
         limit: Int,
         skip: Int,
-        search: String
+        search: String,
+        sortBy: String?,
+        order: String,
+        category: String?
     ): Products {
+        val query = search.trim()
 
-        val endpoint = if (search.isBlank()) {
-            "/products"
-        } else {
-            "/products/search"
+        val endpoint = when {
+            !category.isNullOrBlank() -> "/products/category/${category.trim()}"
+            query.isNotEmpty() -> "/products/search"
+            else -> "/products"
         }
+
         return client.get(endpoint) {
-            if (search.isNotBlank()) {
-                parameter("q", search.trim())
-            }
             parameter("limit", limit)
             parameter("skip", skip)
+
+            if (category.isNullOrBlank() && query.isNotEmpty()) {
+                parameter("q", query)
+            }
+
+            sortBy?.let {
+                parameter("sortBy", it)
+                parameter("order", order)
+            }
         }.body()
     }
 
+
+
     override suspend fun getProductById(
-        productId: Int
+        productId: Long
     ): Product {
         return client.get(
             "/products/$productId"

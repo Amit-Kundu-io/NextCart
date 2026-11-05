@@ -6,7 +6,6 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -37,7 +36,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -56,6 +54,7 @@ import com.amit_kundu_io.home.presentation.navigation.HomeRoutes
 import com.amit_kundu_io.nextcart.root_navigation.bottom_navigation.BottomNavDestination.CATALOG
 import com.amit_kundu_io.nextcart.root_navigation.bottom_navigation.BottomNavDestination.HOME
 import com.amit_kundu_io.nextcart.root_navigation.bottom_navigation.BottomNavDestination.PROFILE
+import com.amit_kundu_io.profile.presentation.navigation.ProfileRoutes
 import org.koin.compose.viewmodel.koinViewModel
 
 @SuppressLint("RestrictedApi")
@@ -137,7 +136,7 @@ fun AppBottomNav(
                     navController.navigate(CatalogRoutes.CatalogRoute)
                 }
                 PROFILE -> {
-
+                    navController.navigate(ProfileRoutes.ProfileRoute)
                 }
             }
         }
@@ -172,8 +171,8 @@ fun CustomBottomBar(
                     ?.any { destination ->
                         when (screen.destination) {
                             HOME -> destination.hasRoute<HomeRoutes.HomeRoute>()
-                            BottomNavDestination.CATALOG ->  destination.hasRoute<CatalogRoutes.CatalogRoute>()
-                            BottomNavDestination.PROFILE ->  destination.hasRoute<HomeRoutes.HomeRoute>()
+                           CATALOG ->  destination.hasRoute<CatalogRoutes.CatalogRoute>()
+                            PROFILE ->  destination.hasRoute<ProfileRoutes.ProfileRoute>()
                         }
                     } == true
 
